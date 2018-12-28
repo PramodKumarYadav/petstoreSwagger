@@ -20,5 +20,6 @@ public class TestPostAddANewPetToStore {
     @Test
     public void postRequestWithFullRequestBody() {
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",createRequest.canCreateFullPetRequestBody(),"json",200);
+        System.out.println("pet");
     }
 }

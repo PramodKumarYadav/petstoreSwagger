@@ -6,17 +6,18 @@ import projectconfiguration.TestEnvironment;
 
 import java.util.List;
 
-public class GetResponse {
+public class GetRequest {
 
     TestEnvironment testEnv = new TestEnvironment();
 
     public Response canGiveResponseUsingPath(String  pathParam , String value ) {
-//    @Test
-//    public void canGiveResponseUsingPath() {
-//        String  pathParam = "pet";
-//        int value = 1;
+//
+        //@Test
+        //public void canGiveResponseUsingPath() {
+        //String  pathParam = "pet";
+        //int value = 1;
+        //Step 01: Parse response from page
 
-        // Step 01: Parse response from page
         String swaggerURL  =  testEnv.getBaseURL();
         String apiURL = swaggerURL + "/" + pathParam + "/" + value;
         System.out.println("apiURL :" + apiURL);

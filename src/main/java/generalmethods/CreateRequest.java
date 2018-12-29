@@ -3,6 +3,8 @@ package generalmethods;
 import org.junit.Test;
 import projectconfiguration.TestEnvironment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CreateRequest {
@@ -19,15 +21,16 @@ public class CreateRequest {
     }
 
     public String canCreateBasicPetRequestBody() {
-//        @Test
-//    public void canCreatePetRequestBody() {
-//        Integer id = 1589257;
-//        String name = "BillyTheDog";
-//        Integer categoryID = id +1;
-//        String cataegoryName = "BullDog";
-//        List<String> photoUrls = new ArrayList<>();
-//        List<String> tags = new ArrayList<>();
-//        String status = "sold";
+//
+        //@Test
+        //public void canCreatePetRequestBody() {
+        //Integer id = 1589257;
+        //String name = "BillyTheDog";
+        //Integer categoryID = id +1;
+        //String cataegoryName = "BullDog";
+        //List<String> photoUrls = new ArrayList<>();
+        //List<String> tags = new ArrayList<>();
+        //String status = "sold";
 
         String  requestBody = "{\n" +
                 "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",  \n" +
@@ -52,28 +55,30 @@ public class CreateRequest {
         return requestBody;
     }
     public String canCreateFullPetRequestBody() {
-//        @Test
-//    public void canCreatePetRequestBody() {
-//        Integer id = 1589257;
-//        String name = "BillyTheDog";
-//        Integer categoryID = id +1;
-//        String cataegoryName = "BullDog";
-//        List<String> photoUrls = new ArrayList<>();
-//        List<String> tags = new ArrayList<>();
-//        String status = "sold";
+//
+        //@Test
+        //public void canCreatePetRequestBody() {
+        //Integer id = 1589257;
+        //String name = "BillyTheDog";
+        //Integer categoryID = id +1;
+        //String cataegoryName = "BullDog";
+        //List<String> photoUrls = new ArrayList<>();
+        //List<String> tags = new ArrayList<>();
+        //String status = "sold";
+        //
         Random generateRandom = new Random();
-
         long randomLongID = generateRandom.nextLong();
-        int randomIntCategoryID = generateRandom.nextInt(1000);
-        int randomIntTag = generateRandom.nextInt(1000);
         System.out.println("id : " + randomLongID);
+
+        String randomStatus = canGenerateRandomStatus();
+        String randomCategory = canGenerateRandomPetCategory();
 
         String  requestBody = "{\n" +
                 "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",  \n" +
                 "  \"name\": \"" + randomNrsAndStrings.canGenerateRandomTenCharLongString() + "\",\n" +
                 "  \"category\": {\n" +
                 "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
-                "    \"name\": \"BullDog\"\n" +
+                "    \"name\": \"" + randomCategory + "\"\n" +
                 "  },\n" +
                 "  \"photoUrls\": [\n" +
                 "     \"http://porodasobak.net/img/uploads/2014/08/1291.jpg\" ," +
@@ -89,11 +94,44 @@ public class CreateRequest {
                 "      \"name\": \"byPramodYadavTag2\"\n" +
                 "    }\n" +
                 "  ],\n" +
-                "  \"status\": \"available\"\n" +
+                "  \"status\": \"" + randomStatus + "\"\n" +
                 "}";
 
         System.out.println("requestBody" + requestBody);
         return requestBody;
     }
+    @Test
+    public String canGenerateRandomStatus() {
+        Random generateRandom = new Random();
+        Integer randomInteger = generateRandom.nextInt(3) ;
+        System.out.println("Random Integer : " + randomInteger);
+
+        List<String> status = new ArrayList<>();
+        status.add("available");
+        status.add("pending");
+        status.add("sold");
+
+        String randomStatus = status.get(randomInteger);
+        System.out.println(randomStatus);
+        return randomStatus;
+    }
+    @Test
+    public String canGenerateRandomPetCategory() {
+        Random generateRandom = new Random();
+        Integer randomInteger = generateRandom.nextInt(5) ;
+        System.out.println("Random Integer : " + randomInteger);
+
+        List<String> category = new ArrayList<>();
+        category.add("dog");
+        category.add("cat");
+        category.add("horse");
+        category.add("bird");
+        category.add("cow");
+
+        String randomCategory = category.get(randomInteger);
+        System.out.println(randomCategory);
+        return randomCategory;
+    }
+
 }
 

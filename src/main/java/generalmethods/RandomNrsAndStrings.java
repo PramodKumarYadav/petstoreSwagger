@@ -7,9 +7,10 @@ import java.util.Random;
 public class RandomNrsAndStrings {
 
     public String canGenerateRandomTenCharLongString() {
-//    @Test
-//    public void canGenerateRandomTenCharLongString() {
-//    Pramod : Reusing this method from : https://www.baeldung.com/java-random-string
+//
+        //@Test
+        //public void canGenerateRandomTenCharLongString() {
+        //Pramod : Reusing this method from : https://www.baeldung.com/java-random-string
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
         int targetStringLength = 10;
@@ -22,7 +23,7 @@ public class RandomNrsAndStrings {
         }
         String generatedString = buffer.toString();
 
-        System.out.println(generatedString);
+        System.out.println("Random String : " + generatedString);
         return generatedString;
     }
     @Test

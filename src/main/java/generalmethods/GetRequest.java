@@ -10,7 +10,27 @@ public class GetRequest {
 
     TestEnvironment testEnv = new TestEnvironment();
 
+    public Response canGiveResponseWithNoParameters(String  pathParam ) {
+        System.out.println("Entered canGiveResponseUsingPath method");
+
+//
+        //@Test
+        //public void canGiveResponseUsingPath() {
+        //String  pathParam = "pet";
+        //Step 01: Parse response from page
+
+        String swaggerURL  =  testEnv.getBaseURL();
+        String apiURL = swaggerURL + "/" + pathParam;
+        System.out.println("apiURL :" + apiURL);
+
+        // use RestAssured to make an HTML Call
+        Response response = RestAssured.get(apiURL).thenReturn();
+        System.out.println(response.prettyPeek());
+        return response;
+    }
     public Response canGiveResponseUsingPath(String  pathParam , String value ) {
+        System.out.println("Entered canGiveResponseUsingPath method");
+
 //
         //@Test
         //public void canGiveResponseUsingPath() {
@@ -24,11 +44,13 @@ public class GetRequest {
 
         // use RestAssured to make an HTML Call
         Response response = RestAssured.get(apiURL).thenReturn();
-//        System.out.println(response.prettyPeek());
+        System.out.println(response.prettyPeek());
         return response;
     }
 
     public Response canGiveResponseUsingQuery(String endPoint, String  pathParam , List<String> values ) {
+        System.out.println("Entered canGiveResponseUsingQuery method");
+
 //    @Test
 //    public void canGiveResponseUsingPath() {
 //        String endPoint = "pet/findByStatus";

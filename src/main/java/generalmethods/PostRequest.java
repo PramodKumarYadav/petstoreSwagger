@@ -1,19 +1,20 @@
 package generalmethods;
 
+import domainentitites.CreatePetRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import projectconfiguration.TestEnvironment;
 
 public class PostRequest {
     TestEnvironment testEnv = new TestEnvironment();
-    CreateRequest createRequest = new CreateRequest();
+    CreatePetRequest createPetRequest = new CreatePetRequest();
 
-    public Response canPostRequestUsingPathAndBody(String  pathParam , String requestBody, String contentType ) {
+    public Response canPostRequestUsingBody(String  pathParam , String requestBody, String contentType ) {
 //
         //@Test
         //public void canPostRequestUsingPathAndBody() {
         //String  pathParam = "pet";
-        //String requestBody = createRequest.canCreatePetRequestBody();
+        //String requestBody = createPetRequest.canCreatePetRequestBody();
         //System.out.println(requestBody);
         //String contentType = "application/json";
         //Step 01: Parse response from page
@@ -25,15 +26,58 @@ public class PostRequest {
         // use RestAssured to make an HTML Call
         Response response = RestAssured.
                 given().request().
-//
-                //header("Access-Control-Allow-Origin","*").
-                //header("Access-Control-Allow-Methods","GET, POST, DELETE, PUT").
-                //header("Access-Control-Allow-Headers","Content-Type, api_key, Authorization").
-                //header("Content-Type","application/json").
                 contentType(contentType).
                 body(requestBody).
                 post(apiURL).thenReturn();
-//        System.out.println(response.prettyPeek());
+        System.out.println(response.prettyPeek());
+        return response;
+    }
+    public Response canPostRequestUsingPathAndParameters(String  pathParam , String value, String nameValue,  String statusValue,  String contentType ) {
+//
+        //@Test
+        //public void canPostRequestUsingPathAndBody() {
+        //String  pathParam = "pet";
+        //String requestBody = createPetRequest.canCreatePetRequestBody();
+        //System.out.println(requestBody);
+        //String contentType = "application/json";
+        //Step 01: Parse response from page
+
+        String swaggerURL  =  testEnv.getBaseURL();
+        String apiURL = swaggerURL + "/" + pathParam + "/" + value;
+        System.out.println("apiURL :" + apiURL);
+
+        // use RestAssured to make an HTML Call
+        Response response = RestAssured.
+                given().request().
+                header("accept",contentType).
+                param("name",nameValue).
+                param("status",statusValue).
+                post(apiURL).thenReturn();
+        System.out.println(response.prettyPeek());
+        return response;
+    }
+
+    public Response canPostRequestUsingPathAndFileParameter(String  pathParam , String value, String metadataValue,  String filePath,  String contentType ) {
+//
+        //@Test
+        //public void canPostRequestUsingPathAndBody() {
+        //String  pathParam = "pet";
+        //String requestBody = createPetRequest.canCreatePetRequestBody();
+        //System.out.println(requestBody);
+        //String contentType = "application/json";
+        //Step 01: Parse response from page
+
+        String swaggerURL  =  testEnv.getBaseURL();
+        String apiURL = swaggerURL + "/" + pathParam + "/" + value +"/uploadImage";
+        System.out.println("apiURL :" + apiURL);
+
+        // use RestAssured to make an HTML Call
+        Response response = RestAssured.
+                given().request().
+                header("accept",contentType).
+                multiPart("file2","file=@Original2.jpg;type=image/jpeg").
+                post(apiURL).thenReturn();
+        System.out.println(response.prettyPeek());
         return response;
     }
 }

@@ -1,19 +1,19 @@
 package petstore.swagger.io.pet;
 
+import domainentitites.CreatePetRequest;
 import domainentitites.PetMethods;
-import generalmethods.CreateRequest;
 import io.restassured.path.json.JsonPath;
 import org.junit.Test;
 
 public class TestGetFindPetByID {
     PetMethods petMethods = new PetMethods();
-    CreateRequest createRequest = new CreateRequest();
+    CreatePetRequest createPetRequest = new CreatePetRequest();
 
     @Test
     public void searchWithExistingPetID() {
 
         // First create a request to ensure the ID exists for search
-        String requestBody = createRequest.canCreateBasicPetRequestBody();
+        String requestBody = createPetRequest.canCreateBasicPetRequestBody();
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
 
         // Get request ID
@@ -26,6 +26,7 @@ public class TestGetFindPetByID {
     }
     @Test
     public void searchWithNonExistingPetID() {
+
         petMethods.canFindPetByIDAndAssertStatus("pet","123211",404);
     }
     @Test

@@ -1,5 +1,6 @@
-package generalmethods;
+package domainentitites;
 
+import generalmethods.RandomNrsAndStrings;
 import org.junit.Test;
 import projectconfiguration.TestEnvironment;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CreateRequest {
+public class CreatePetRequest {
     TestEnvironment testEnv = new TestEnvironment();
     RandomNrsAndStrings randomNrsAndStrings = new RandomNrsAndStrings();
 
@@ -95,6 +96,54 @@ public class CreateRequest {
                 "    }\n" +
                 "  ],\n" +
                 "  \"status\": \"" + randomStatus + "\"\n" +
+                "}";
+
+        System.out.println("requestBody" + requestBody);
+        return requestBody;
+    }
+    public String canCreateCustomPetRequestBody(String id, String name, String status) {
+//
+        //@Test
+        //public void canCreateCustomPetRequestBody() {
+        //Integer id = 1589257;
+        //String name = "BillyTheDog";
+        //Integer categoryID = id +1;
+        //String cataegoryName = "BullDog";
+        //List<String> photoUrls = new ArrayList<>();
+        //List<String> tags = new ArrayList<>();
+        //String status = "sold";
+        //String randomStatus = canGenerateRandomStatus();
+
+        System.out.println("id : " + id);
+        System.out.println("name : " + name);
+        System.out.println("status : " + status);
+
+        Random generateRandom = new Random();
+        long randomLongID = generateRandom.nextLong();
+        String randomCategory = canGenerateRandomPetCategory();
+
+        String  requestBody = "{\n" +
+                "  \"id\": "+ id +",  \n" +
+                "  \"name\": \"" + name+ "\",\n" +
+                "  \"category\": {\n" +
+                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "    \"name\": \"" + randomCategory + "\"\n" +
+                "  },\n" +
+                "  \"photoUrls\": [\n" +
+                "     \"http://porodasobak.net/img/uploads/2014/08/1291.jpg\" ," +
+                "     \"https://www.ptichka.ru/data/cache/2018mar/19/03/64590_14562.jpg\" " +
+                "  ],\n" +
+                "  \"tags\": [\n" +
+                "    {\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"name\": \"byPramodYadavTag1\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"name\": \"byPramodYadavTag2\"\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"status\": \"" + status + "\"\n" +
                 "}";
 
         System.out.println("requestBody" + requestBody);

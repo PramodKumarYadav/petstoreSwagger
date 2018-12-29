@@ -1,27 +1,26 @@
 package petstore.swagger.io.pet;
 
+import domainentitites.CreatePetRequest;
 import domainentitites.PetMethods;
-import generalmethods.CreateRequest;
-import io.restassured.path.json.JsonPath;
+import generalmethods.ParseJSON;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class TestDeleteDeletesAPet {
     PetMethods petMethods = new PetMethods();
-    CreateRequest createRequest = new CreateRequest();
+    CreatePetRequest createPetRequest = new CreatePetRequest();
+    ParseJSON parseJSON = new ParseJSON();
 
     @Test
     public void deleteExistingPetID() {
 
         // First create a request to ensure the ID exists for deletion
-        String requestBody = createRequest.canCreateBasicPetRequestBody();
+        String requestBody = createPetRequest.canCreateBasicPetRequestBody();
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
 
         // Get request ID
-        JsonPath jsonPathrequestBody = new JsonPath(requestBody);
-        String petID = jsonPathrequestBody.getString("id");
-        System.out.println("petID : " + petID);
+        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBody.toString(),"id","Search using ");
 
         // Delete the pet using petID (so response code 200)
         petMethods.canDeletePetByIDAndAssertStatus("pet",petID,200);

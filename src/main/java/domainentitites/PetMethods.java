@@ -13,8 +13,9 @@ public class PetMethods {
     TestEnvironment testEnv = new TestEnvironment();
     GetRequest getRequest = new GetRequest();
     DeleteRequest deleteRequest = new DeleteRequest();
-    CreateRequest createRequest = new CreateRequest();
+    CreatePetRequest createPetRequest = new CreatePetRequest();
     PostRequest postRequest = new PostRequest();
+    PutRequest putRequest = new PutRequest();
     AssertResponse assertResponse = new AssertResponse();
 /*
 NOTE : "Implementing below method with petID as String and not as Integer to be able to test " +
@@ -63,14 +64,55 @@ NOTE : "Implementing below method with petID as String and not as Integer to be 
         //@Test
         //public void canPostPetRequestByBodyAndAssertStatus() {
         //String pet = "pet";
-        //String requestBody = createRequest.canCreatePetRequestBody();
+        //String requestBody = createPetRequest.canCreatePetRequestBody();
         //String contentType = "json";
         //long expectedStatus = 200;
 
-        Response response = postRequest.canPostRequestUsingPathAndBody(pet, requestBody, "application/" + contentType);
+        Response response = postRequest.canPostRequestUsingBody(pet, requestBody, "application/" + contentType);
         assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
         // Assert that the ID from response is same as ID given in the request.
-        assertResponse.canAssertAResponseKey(requestBody,response,"id");
+        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");
+        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
+        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
     }
+    public void canPutPetRequestByBodyAndAssertResponse(String  pet , String requestBody, String contentType, long expectedStatus ) {
+//
+        //@Test
+        //public void canPutPetRequestByBodyAndAssertResponse() {
+        //String pet = "pet";
+        //String requestBody = createPetRequest.canCreateCustomPetRequestBody();
+        //String contentType = "json";
+        //long expectedStatus = 200;
 
+        Response response = putRequest.canPutRequestUsingBody(pet, requestBody, "application/" + contentType);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+        // Assert that the ID from response is same as ID given in the request.
+        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");
+        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
+        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
+    }
+    public void canPostPetRequestByPathAndAssertResponse(String  pet , String petID, String nameValue,  String statusValue, String contentType, long expectedStatus ) {
+//
+        //@Test
+        //public void canPutPetRequestByBodyAndAssertResponse() {
+        //String pet = "pet";
+        //String requestBody = createPetRequest.canCreateCustomPetRequestBody();
+        //String contentType = "json";
+        //long expectedStatus = 200;
+
+        Response response = postRequest.canPostRequestUsingPathAndParameters(pet, petID, nameValue, statusValue,"application/" + contentType);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
+    public void canPostPetRequestByPathAndFileFormData(String  pet , String petID, String metadataValue,  String filePath, String contentType, long expectedStatus ) {
+//
+        //@Test
+        //public void canPutPetRequestByBodyAndAssertResponse() {
+        //String pet = "pet";
+        //String requestBody = createPetRequest.canCreateCustomPetRequestBody();
+        //String contentType = "json";
+        //long expectedStatus = 200;
+
+        Response response = postRequest.canPostRequestUsingPathAndFileParameter(pet, petID, metadataValue, filePath,"application/" + contentType);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
 }

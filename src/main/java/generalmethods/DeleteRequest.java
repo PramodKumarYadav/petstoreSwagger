@@ -8,7 +8,7 @@ public class DeleteRequest {
 
     TestEnvironment testEnv = new TestEnvironment();
 
-    public Response canDeleteElementUsingPath(String  pathParam, String value) {
+    public Response canDeleteElementUsingPath(String  endpoint, String value) {
 //
         //@Test
         //public void canDeleteElementUsingPath() {
@@ -17,7 +17,7 @@ public class DeleteRequest {
         //Step 01: Parse response from page
 
         String swaggerURL  =  testEnv.getBaseURL();
-        String apiURL = swaggerURL + "/" + pathParam + "/" + value;
+        String apiURL = swaggerURL + "/" + endpoint + "/" + value;
         System.out.println("apiURL :" + apiURL);
 
         // use RestAssured to make an HTML Call

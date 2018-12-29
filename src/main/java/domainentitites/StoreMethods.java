@@ -37,4 +37,23 @@ public class StoreMethods {
         Response response = getRequest.canGiveResponseWithNoParameters(pathParam);
         assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
     }
+    public void canDeleteOrderByIDAndAssertStatus(String  endPoint , String orderID, long expectedStatus ) {
+//
+        //@Test
+        //public void canFindPetByID() {
+        //String  endPoint = "store/order";
+        //String orderID = "10";
+
+        Response response = deleteRequest.canDeleteElementUsingPath(endPoint,orderID);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
+    public void canGetOrderByIDAndAssertStatus(String  endPoint , String orderID, long expectedStatus ) {
+//
+        //@Test
+        //public void canFindPetByID() {
+        //String  endPoint= "store/order";
+        //String orderID = "9";
+        Response response = getRequest.canGiveResponseUsingPath(endPoint,orderID);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
 }

@@ -5,7 +5,7 @@ import domainentitites.StoreMethods;
 import generalmethods.ParseJSON;
 import org.junit.Test;
 
-public class TestPostGetInventory {
+public class TestGetInventory {
     StoreMethods storeMethods = new StoreMethods();
     CreateOrderRequest createOrderRequest = new CreateOrderRequest();
     ParseJSON parseJSON = new ParseJSON();

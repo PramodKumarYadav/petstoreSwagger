@@ -30,7 +30,7 @@ public class CreateUserRequest {
                 "  \"email\": \""+ "PramodYadavdummyemail@gmail.com" +"\",\n" +
                 "  \"password\": \""+ "431108055" +"\",\n" +
                 "  \"phone\": \""+ "0987654321" +"\",\n" +
-                "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
+                "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +"\n" +
                 "}";
         System.out.println("requestBody" + requestBody);
         return requestBody;
@@ -44,7 +44,7 @@ public class CreateUserRequest {
                 "  \"email\": \""+ "PramodYadavdummyemail@gmail.com" +"\",\n" +
                 "  \"password\": \""+ "431108055" +"\",\n" +
                 "  \"phone\": \""+ "0987654321" +"\",\n" +
-                "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
+                "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +"\n" +
                 "}";
         System.out.println("requestBody" + requestBody);
         return requestBody;

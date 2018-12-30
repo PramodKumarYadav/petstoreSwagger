@@ -80,6 +80,18 @@ public class GetRequest {
         return response;
     }
 
+    public Response canGiveResponseUsingFullQueryAsInput(String endPoint, String  query ) {
+
+        // Step 01: Parse response from page
+        String swaggerURL  =  testEnv.getBaseURL();
+        String apiURL = swaggerURL + "/" + endPoint + "?" + query;
+        System.out.println("apiURL :" + apiURL);
+
+        // use RestAssured to make an HTML Call
+        Response response = RestAssured.get(apiURL).thenReturn();
+        System.out.println(response.prettyPeek());
+        return response;
+    }
 }
 
 

@@ -9,7 +9,7 @@ public class PostRequest {
     TestEnvironment testEnv = new TestEnvironment();
     CreatePetRequest createPetRequest = new CreatePetRequest();
 
-    public Response canPostRequestUsingBody(String  pathParam , String requestBody, String contentType ) {
+    public Response canPostRequestUsingBody(String  endPoint , String requestBody, String contentType ) {
 //
         //@Test
         //public void canPostRequestUsingPathAndBody() {
@@ -20,19 +20,20 @@ public class PostRequest {
         //Step 01: Parse response from page
 
         String swaggerURL  =  testEnv.getBaseURL();
-        String apiURL = swaggerURL + "/" + pathParam;
+        String apiURL = swaggerURL + "/" + endPoint;
         System.out.println("apiURL :" + apiURL);
 
         // use RestAssured to make an HTML Call
         Response response = RestAssured.
                 given().request().
+                header("api_key","special-key").
                 contentType(contentType).
                 body(requestBody).
                 post(apiURL).thenReturn();
         System.out.println(response.prettyPeek());
         return response;
     }
-    public Response canPostRequestUsingPathAndParameters(String  pathParam , String value, String nameValue,  String statusValue,  String contentType ) {
+    public Response canPostRequestUsingPathAndParameters(String  endPoint , String value, String nameValue,  String statusValue,  String contentType ) {
 //
         //@Test
         //public void canPostRequestUsingPathAndBody() {
@@ -43,7 +44,7 @@ public class PostRequest {
         //Step 01: Parse response from page
 
         String swaggerURL  =  testEnv.getBaseURL();
-        String apiURL = swaggerURL + "/" + pathParam + "/" + value;
+        String apiURL = swaggerURL + "/" + endPoint + "/" + value;
         System.out.println("apiURL :" + apiURL);
 
         // use RestAssured to make an HTML Call
@@ -57,7 +58,7 @@ public class PostRequest {
         return response;
     }
 
-    public Response canPostRequestUsingPathAndFileParameter(String  pathParam , String value, String metadataValue,  String filePath,  String contentType ) {
+    public Response canPostRequestUsingPathAndFileParameter(String  endPoint , String value, String metadataValue,  String filePath,  String contentType ) {
 //
         //@Test
         //public void canPostRequestUsingPathAndBody() {
@@ -68,7 +69,7 @@ public class PostRequest {
         //Step 01: Parse response from page
 
         String swaggerURL  =  testEnv.getBaseURL();
-        String apiURL = swaggerURL + "/" + pathParam + "/" + value +"/uploadImage";
+        String apiURL = swaggerURL + "/" + endPoint + "/" + value +"/uploadImage";
         System.out.println("apiURL :" + apiURL);
 
         // use RestAssured to make an HTML Call

@@ -28,13 +28,13 @@ public class StoreMethods {
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
     }
-    public void canGetInventoryAndAssertResponse(String  pathParam , long expectedStatus ) {
+    public void canGetInventoryAndAssertResponse(String  endPoint , long expectedStatus ) {
 //
         //@Test
         //public void canFindPetByID() {
         //String  pet = "pet";
         //String petID = "1";
-        Response response = getRequest.canGiveResponseWithNoParameters(pathParam);
+        Response response = getRequest.canGiveResponseWithNoParameters(endPoint);
         assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
     }
     public void canDeleteOrderByIDAndAssertStatus(String  endPoint , String orderID, long expectedStatus ) {

@@ -13,14 +13,7 @@ public class TestDeleteOrderByID {
     StoreMethods storeMethods = new StoreMethods();
     CreateOrderRequest createOrderRequest = new CreateOrderRequest();
     ParseJSON parseJSON = new ParseJSON();
-    @Test
-    public void tryDeleteingNonExistingOrderID() {
-        storeMethods.canDeleteOrderByIDAndAssertStatus("store/order","112112323",404);
-    }
-    @Test
-    public void tryDeleteingInvalidOrderID() {
-        storeMethods.canDeleteOrderByIDAndAssertStatus("store/order","abcdf",400);
-    }
+
     @Test
     public void tryDeleteingExistingOrderID() {
 
@@ -37,6 +30,13 @@ public class TestDeleteOrderByID {
         // Search to ensure that order was deleted (so not found).
         storeMethods.canGetOrderByIDAndAssertStatus("store/order",orderID,404);
     }
-
+    @Test
+    public void tryDeleteingNonExistingOrderID() {
+        storeMethods.canDeleteOrderByIDAndAssertStatus("store/order","112112323",404);
+    }
+    @Test
+    public void tryDeleteingInvalidOrderID() {
+        storeMethods.canDeleteOrderByIDAndAssertStatus("store/order","abcdf",400);
+    }
 
 }

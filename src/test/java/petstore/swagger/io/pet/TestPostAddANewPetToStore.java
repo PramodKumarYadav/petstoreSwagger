@@ -16,6 +16,11 @@ public class TestPostAddANewPetToStore {
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBody,"json",405);
     }
     @Test
+    public void postRequestWithBadRequestBody() {
+        String requestBody = createPetRequest.canCreateBadPetRequestBody();
+        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBody,"json",400);
+    }
+    @Test
     public void postRequestWithBasicRequestBody() {
         String requestBody = createPetRequest.canCreateBasicPetRequestBody();
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
@@ -25,4 +30,6 @@ public class TestPostAddANewPetToStore {
         String requestBody = createPetRequest.canCreateFullPetRequestBody();
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
     }
+
+
 }

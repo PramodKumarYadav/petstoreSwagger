@@ -6,14 +6,14 @@ import java.util.Random;
 
 public class RandomNrsAndStrings {
 
-    public String canGenerateRandomTenCharLongString() {
+    public String canGenerateRandomString(Integer bound) {
 //
         //@Test
-        //public void canGenerateRandomTenCharLongString() {
-        //Pramod : Reusing this method from : https://www.baeldung.com/java-random-string
+        //public void canGenerateRandomString() {
+        //Pramod : Customizing for my needs; this method is from : https://www.baeldung.com/java-random-string
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
+        int targetStringLength = bound;
         Random random = new Random();
         StringBuilder buffer = new StringBuilder(targetStringLength);
         for (int i = 0; i < targetStringLength; i++) {
@@ -27,9 +27,9 @@ public class RandomNrsAndStrings {
         return generatedString;
     }
     @Test
-    public Integer canGenerateRandomInteger() {
+    public Integer canGenerateRandomInteger(Integer bound) {
         Random generateRandom = new Random();
-        int randomInteger = generateRandom.nextInt(1000000);
+        int randomInteger = generateRandom.nextInt(bound);
         System.out.println("Random Integer : " + randomInteger);
         return randomInteger;
     }

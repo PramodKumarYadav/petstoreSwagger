@@ -10,8 +10,13 @@ public class TestGetInventory {
     CreateOrderRequest createOrderRequest = new CreateOrderRequest();
     ParseJSON parseJSON = new ParseJSON();
     @Test
-    public void searchWithNonExistingPetID() {
+    public void getStoreInventory() {
 
         storeMethods.canGetInventoryAndAssertResponse("store/inventory",200);
+    }
+    @Test
+    public void getStoreInventoryInvalidEndPoint() {
+
+        storeMethods.canGetInventoryAndAssertResponse("store/invent",404);
     }
 }

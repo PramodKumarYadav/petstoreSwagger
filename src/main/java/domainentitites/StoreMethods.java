@@ -12,7 +12,7 @@ public class StoreMethods {
     PostRequest postRequest = new PostRequest();
     PutRequest putRequest = new PutRequest();
     AssertResponse assertResponse = new AssertResponse();
-    public void canPostOrderRequestByBodyAndAssertResponse(String  pathParam , String requestBody, String contentType, long expectedStatus ) {
+    public void canPostOrderRequestByBodyAndAssertResponse(String  endPoint , String requestBody, String contentType, long expectedStatus ) {
 //
         //@Test
         //public void canPostPetRequestByBodyAndAssertStatus() {
@@ -21,7 +21,7 @@ public class StoreMethods {
         //String contentType = "json";
         //long expectedStatus = 200;
 
-        Response response = postRequest.canPostRequestUsingBody(pathParam, requestBody, "application/" + contentType);
+        Response response = postRequest.canPostRequestUsingBody(endPoint, requestBody, "application/" + contentType);
         assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
         // Assert that the ID from response is same as ID given in the request.
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");

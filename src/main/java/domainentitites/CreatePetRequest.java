@@ -20,6 +20,40 @@ public class CreatePetRequest {
         System.out.println("requestBody" + requestBody);
         return requestBody;
     }
+    public String canCreateBadPetRequestBody() {
+//
+        //@Test
+        //public void canCreatePetRequestBody() {
+        //Integer id = 1589257;
+        //String name = "BillyTheDog";
+        //Integer categoryID = id +1;
+        //String cataegoryName = "BullDog";
+        //List<String> photoUrls = new ArrayList<>();
+        //List<String> tags = new ArrayList<>();
+        //String status = "sold";
+
+        String  requestBody = "{{\n" +
+                "  \"idadfas\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",  \n" +
+                "  \"name\": \"" + randomNrsAndStrings.canGenerateRandomString(6) + "\",\n" +
+                "  \"category\": {\n" +
+                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(100) +",\n" +
+                "    \"name\": \"BullDog\"\n" +
+                "  },\n" +
+                "  \"photoUrls\": [\n" +
+                "    \"string\"\n" +
+                "  ],\n" +
+                "  \"tags\": [\n" +
+                "    {\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
+                "      \"name\": \"byPramodYadav\"\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"status\": \"available\"\n" +
+                "}";
+
+        System.out.println("requestBody" + requestBody);
+        return requestBody;
+    }
 
     public String canCreateBasicPetRequestBody() {
 //
@@ -34,10 +68,10 @@ public class CreatePetRequest {
         //String status = "sold";
 
         String  requestBody = "{\n" +
-                "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",  \n" +
-                "  \"name\": \"" + randomNrsAndStrings.canGenerateRandomTenCharLongString() + "\",\n" +
+                "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",  \n" +
+                "  \"name\": \"" + randomNrsAndStrings.canGenerateRandomString(6) + "\",\n" +
                 "  \"category\": {\n" +
-                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(100) +",\n" +
                 "    \"name\": \"BullDog\"\n" +
                 "  },\n" +
                 "  \"photoUrls\": [\n" +
@@ -45,7 +79,7 @@ public class CreatePetRequest {
                 "  ],\n" +
                 "  \"tags\": [\n" +
                 "    {\n" +
-                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
                 "      \"name\": \"byPramodYadav\"\n" +
                 "    }\n" +
                 "  ],\n" +
@@ -75,10 +109,10 @@ public class CreatePetRequest {
         String randomCategory = canGenerateRandomPetCategory();
 
         String  requestBody = "{\n" +
-                "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",  \n" +
-                "  \"name\": \"" + randomNrsAndStrings.canGenerateRandomTenCharLongString() + "\",\n" +
+                "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",  \n" +
+                "  \"name\": \"" + randomNrsAndStrings.canGenerateRandomString(7) + "\",\n" +
                 "  \"category\": {\n" +
-                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(100) +",\n" +
                 "    \"name\": \"" + randomCategory + "\"\n" +
                 "  },\n" +
                 "  \"photoUrls\": [\n" +
@@ -87,11 +121,11 @@ public class CreatePetRequest {
                 "  ],\n" +
                 "  \"tags\": [\n" +
                 "    {\n" +
-                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
                 "      \"name\": \"byPramodYadavTag1\"\n" +
                 "    },\n" +
                 "    {\n" +
-                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
                 "      \"name\": \"byPramodYadavTag2\"\n" +
                 "    }\n" +
                 "  ],\n" +
@@ -126,7 +160,7 @@ public class CreatePetRequest {
                 "  \"id\": "+ id +",  \n" +
                 "  \"name\": \"" + name+ "\",\n" +
                 "  \"category\": {\n" +
-                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "    \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",\n" +
                 "    \"name\": \"" + randomCategory + "\"\n" +
                 "  },\n" +
                 "  \"photoUrls\": [\n" +
@@ -135,11 +169,11 @@ public class CreatePetRequest {
                 "  ],\n" +
                 "  \"tags\": [\n" +
                 "    {\n" +
-                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
                 "      \"name\": \"byPramodYadavTag1\"\n" +
                 "    },\n" +
                 "    {\n" +
-                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger() +",\n" +
+                "      \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +",\n" +
                 "      \"name\": \"byPramodYadavTag2\"\n" +
                 "    }\n" +
                 "  ],\n" +

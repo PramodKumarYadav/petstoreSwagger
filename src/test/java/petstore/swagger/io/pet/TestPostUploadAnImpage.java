@@ -10,7 +10,7 @@ public class TestPostUploadAnImpage {
     CreatePetRequest createPetRequest = new CreatePetRequest();
     ParseJSON parseJSON = new ParseJSON();
     @Test
-    // TODO: 12/29/2018  
+    // TODO: 12/29/2018
     public void postRequestUpdatenameAndStatus_pending() {
         String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
         petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);

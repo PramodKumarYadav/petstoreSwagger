@@ -21,6 +21,7 @@ For this,
 
 # TEST REPORT :
 I use the inbuilt test reports options in IntelliJ to generate my log results into txt file. I do this using Run -> Edit Configuration -> Select "Configuraiton" at Class level (or at method level), give a name of file and location under "Logs" section.
+All reports can be found at -> D:\petstoreSwagger\TestResults
 
 # VERSION CONTROL :
 I use the inbuilt function in intelliJ to add a GIT repository for version control using (VCS -.GIT.). Once done, I push the changes to remote using command line to my github repository (https://github.com/PramodKumarYadav/petstoreSwagger/)

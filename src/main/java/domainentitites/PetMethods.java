@@ -2,118 +2,41 @@ package domainentitites;
 
 import io.restassured.response.Response;
 import generalmethods.*;
-import TestData.CreatePetRequest;
-import projectconfiguration.TestEnvironment;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class PetMethods {
-
-    TestEnvironment testEnv = new TestEnvironment();
     GetRequest getRequest = new GetRequest();
     DeleteRequest deleteRequest = new DeleteRequest();
-    CreatePetRequest createPetRequest = new CreatePetRequest();
     PostRequest postRequest = new PostRequest();
     PutRequest putRequest = new PutRequest();
-    AssertResponse assertResponse = new AssertResponse();
-/*
-NOTE : "Implementing below method with petID as String and not as Integer to be able to test " +
-"both negative and positive tests")
-*/
-    public void canFindPetByIDAndAssertStatus(String  endPoint , String petID, long expectedStatus ) {
-//
-        //@Test
-        //public void canFindPetByID() {
-        //String  pet = "pet";
-        //String petID = "1";
-        Response response = getRequest.canGiveResponseUsingPath(endPoint,petID);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
-    }
-    public void canFindPetByStatusAndAssertStatus(String endPoint, String  status , List<String> arguments, long expectedStatus ) {
-//
-        //
-        //@Test
-        //public void canFindPetByIDAndAssertHeader() {
-        //String  endPoint = "pet/findByStatus";
-        //String  status = "status";
-        //List<String> arguments = new ArrayList<String>();
-        //arguments.add("available");
-        //arguments.add("pending");
-        //System.out.println("arguments " + values);
-        //System.out.println(arguments.size());
-        //System.out.println(arguments.get(0) );
-        //System.out.println(arguments.get(1) );
-        //long expectedStatus = 200;
-        //
-        Response response = getRequest.canGiveResponseUsingQuery(endPoint,status,arguments);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
-    }
-    public void canDeletePetByIDAndAssertStatus(String  endPoint , String petID, long expectedStatus ) {
-//
-        //@Test
-        //public void canFindPetByID() {
-        //String  pet = "pet";
-        //String petID = "1";
-        Response response = deleteRequest.canDeleteElementUsingPath(endPoint,petID);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
-    }
 
-    public void canPostPetRequestByBodyAndAssertResponse(String  endPoint , String requestBody, String contentType, long expectedStatus ) {
-//
-        //@Test
-        //public void canPostPetRequestByBodyAndAssertStatus() {
-        //String endPoint = "pet";
-        //String requestBody = createPetRequest.canCreatePetRequestBody();
-        //String contentType = "json";
-        //long expectedStatus = 200;
-
-        Response response = postRequest.canPostRequestUsingBody(endPoint, requestBody, "application/" + contentType);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
-        // Assert that the ID from response is same as ID given in the request.
-        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");
-        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
-        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
+    public Response getFindPetByID(String  endPointPet , String petID) {
+        Response response = getRequest.canGiveResponseUsingPath(endPointPet,petID);
+        return response;
     }
-    public void canPutPetRequestByBodyAndAssertResponse(String  endPoint , String requestBody, String contentType, long expectedStatus ) {
-//
-        //@Test
-        //public void canPutPetRequestByBodyAndAssertResponse() {
-        //String pet = "pet";
-        //String requestBody = createPetRequest.canCreateCustomPetRequestBody();
-        //String contentType = "json";
-        //long expectedStatus = 200;
-
-        Response response = putRequest.canPutRequestUsingBody(endPoint, requestBody, "application/" + contentType);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
-        // Assert that the ID from response is same as ID given in the request.
-        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");
-        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
-        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
+    public Response getFindPetsByStatus(String endPointPetFindByStatus, String  pathStatus , List<String> statusArguments) {
+        Response response = getRequest.canGiveResponseUsingQuery(endPointPetFindByStatus,pathStatus,statusArguments);
+        return response;
     }
-    public void canPostPetRequestByPathAndAssertResponse(String  endPoint , String petID, String nameValue,  String statusValue, String contentType, long expectedStatus ) {
-//
-        //@Test
-        //public void canPutPetRequestByBodyAndAssertResponse() {
-        //String pet = "pet";
-        //String requestBody = createPetRequest.canCreateCustomPetRequestBody();
-        //String contentType = "json";
-        //long expectedStatus = 200;
-
-        Response response = postRequest.canPostRequestUsingPathAndParameters(endPoint, petID, nameValue, statusValue,"application/" + contentType);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    public Response postAddANewPetToTheStore(String  endPointPet , String requestBodyPet, String json_xml ) {
+        Response response = postRequest.canPostRequestUsingBody(endPointPet, requestBodyPet, "application/" + json_xml);
+        return response;
     }
-    public void canPostPetRequestByPathAndFileFormData(String  endPoint , String petID, String metadataValue,  String filePath, String contentType, long expectedStatus ) {
-//
-        //@Test
-        //public void canPutPetRequestByBodyAndAssertResponse() {
-        //String pet = "pet";
-        //String requestBody = createPetRequest.canCreateCustomPetRequestBody();
-        //String contentType = "json";
-        //long expectedStatus = 200;
-
-        Response response = postRequest.canPostRequestUsingPathAndFileParameter(endPoint, petID, metadataValue, filePath,"application/" + contentType);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    public Response postUpdateAPetInStoreWithFormData(String  endPointPet , String petID, String nameValue,  String statusValue, String json_xml ) {
+        Response response = postRequest.canPostRequestUsingPathAndParameters(endPointPet, petID, nameValue, statusValue,"application/" + json_xml);
+        return response;
+    }
+    public Response postUploadAnImage(String  endPointPet_id_uploadImage , String petID, String metadataValue,  String filePath, String json_xml ) {
+        Response response = postRequest.canPostRequestUsingPathAndFileParameter(endPointPet_id_uploadImage, petID, metadataValue, filePath,"application/" + json_xml);
+        return response;
+    }
+    public Response putUpdateAnExistingPet(String  endPointPet , String requestBodyPet, String json_xml ) {
+        Response response = putRequest.canPutRequestUsingBody(endPointPet, requestBodyPet, "application/" + json_xml);
+        return response;
+    }
+    public Response deleteDeletesAPet(String  endPointPet , String petID ) {
+        Response response = deleteRequest.canDeleteElementUsingPath(endPointPet,petID);
+        return response;
     }
 }

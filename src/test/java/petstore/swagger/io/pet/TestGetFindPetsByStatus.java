@@ -1,6 +1,8 @@
 package petstore.swagger.io.pet;
 
 import domainentitites.PetMethods;
+import generalmethods.AssertResponse;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,24 +10,28 @@ import java.util.List;
 
 public class TestGetFindPetsByStatus {
     PetMethods petMethods = new PetMethods();
+    AssertResponse assertResponse = new AssertResponse();
 
     @Test
     public void searchWithStatusAvailable() {
         List<String> arguments = new ArrayList<>();
         arguments.add("available");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void searchWithStatusPending() {
         List<String> arguments = new ArrayList<>();
         arguments.add("pending");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void searchWithStatusSold() {
         List<String> arguments = new ArrayList<>();
         arguments.add("sold");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void searchWithAllThreeStatus() {
@@ -33,39 +39,45 @@ public class TestGetFindPetsByStatus {
         arguments.add("available");
         arguments.add("pending");
         arguments.add("sold");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void searchWithAvailableAndPending() {
         List<String> arguments = new ArrayList<>();
         arguments.add("available");
         arguments.add("pending");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void searchWithAvailableAndSold() {
         List<String> arguments = new ArrayList<>();
         arguments.add("available");
         arguments.add("sold");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void searchWithPendingAndSold() {
         List<String> arguments = new ArrayList<>();
         arguments.add("pending");
         arguments.add("sold");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,200);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
 
     @Test
     public void searchWithEmptyArgument() {
         List<String> arguments = new ArrayList<>();
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,404);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(404,response.getStatusCode());
     }
     @Test
     public void searchWithInvalidArgument() {
         List<String> arguments = new ArrayList<>();
         arguments.add("random");
-        petMethods.canFindPetByStatusAndAssertStatus("pet/findByStatus","status",arguments,404);
+        Response response = petMethods.getFindPetsByStatus("pet/findByStatus","status",arguments);
+        assertResponse.canAssertResponseStatus(404,response.getStatusCode());
     }
 }

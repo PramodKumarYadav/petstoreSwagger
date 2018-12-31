@@ -1,24 +1,22 @@
 package petstore.swagger.io.user;
 
-import TestData.CreateOrderRequest;
-import domainentitites.StoreMethods;
 import domainentitites.UserMethods;
-import generalmethods.ParseJSON;
+import generalmethods.AssertResponse;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 public class TestGetLogoutUser {
     UserMethods userMethods = new UserMethods();
-    CreateOrderRequest createOrderRequest = new CreateOrderRequest();
-    ParseJSON parseJSON = new ParseJSON();
+    AssertResponse assertResponse = new AssertResponse();
 
     @Test
     public void logoutCurrentUserSession() {
-
-        userMethods.canLogoutUserAndAssertResponse("user/logout",200);
+        Response response = userMethods.getLogsOutCurrentLoggedInUserSession("user/logout");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void logoutCurrentUserSessionInvalidEndPoint() {
-
-        userMethods.canLogoutUserAndAssertResponse("user/logoutttttt",500);
+        Response response = userMethods.getLogsOutCurrentLoggedInUserSession("user/logouttttt");
+        assertResponse.canAssertResponseStatus(500,response.getStatusCode());
     }
 }

@@ -13,58 +13,36 @@ public class UserMethods {
     PostRequest postRequest = new PostRequest();
     PutRequest putRequest = new PutRequest();
     AssertResponse assertResponse = new AssertResponse();
-    public void canGetUserByUserNameAndAssertStatus(String  endPointUser , String username, long expectedStatus ) {
-//
-        //@Test
-        //public void canGetUserByUserNameAndAssertStatus() {
-        //String  endPoint= "user;
-        //String username = "user1";
+    public Response getGetUserByUserName(String  endPointUser , String username ) {
         Response response = getRequest.canGiveResponseUsingPath(endPointUser,username);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+        return response;
     }
-    public void canLogoutUserAndAssertResponse(String  endPointUserLogout , long expectedStatus ) {
-//
-        //@Test
-        //public void canLogoutUserAndAssertResponse() {
-        //String  endPoint = "user/logout";
-
+    public Response getLogsOutCurrentLoggedInUserSession(String  endPointUserLogout ) {
         Response response = getRequest.canGiveResponseWithNoParameters(endPointUserLogout);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+        return response;
     }
-    public void canLogInUserAndAssertResponse(String endPointUserLogin, String  queryUsernamePassword , long expectedStatus ) {
-//
-        //@Test
-        //public void canLogInUserAndAssertResponse() {
-        //String  endPoint = "user/login";
-        //Query = ?username=user1&password=pass%40123
-
+    public Response getLogsUserIntoTheSystem(String endPointUserLogin, String  queryUsernamePassword  ) {
         Response response = getRequest.canGiveResponseUsingFullQueryAsInput(endPointUserLogin,queryUsernamePassword);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+        return response;
     }
-    public void canCreateUserByBodyAndAssertResponse(String  endPointUser , String requestBodyUser, String contentType, long expectedStatus ) {
-//
-        //@Test
-        //public void canPostPetRequestByBodyAndAssertStatus() {
-        //String pathParam = "store/order";
-        //String requestBody = createPetRequest.canCreatePetRequestBody();
-        //String contentType = "json";
-        //long expectedStatus = 200;
-
-        Response response = postRequest.canPostRequestUsingBody(endPointUser, requestBodyUser, "application/" + contentType);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
-        // Assert that the ID from response is same as ID given in the request.
-//        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");
-//        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
-//        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
+    public Response postCreateUser(String  endPointUser , String requestBodyUser, String json_xml ) {
+        Response response = postRequest.canPostRequestUsingBody(endPointUser, requestBodyUser, "application/" + json_xml);
+        return response;
     }
-    public void canUpdateUserByBodyAndPathAndAssertResponse(String  endPointUser , String username, String requestBody, String contentType, long expectedStatus ) {
-        Response response = putRequest.canPutRequestUsingBody(endPointUser, requestBody, "application/" + contentType);
-
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    public Response postCreateListOfUsersWithGivenInputArray(String  endPointUserCreateWithArray , String requestBodyUser, String json_xml ) {
+        Response response = postRequest.canPostRequestUsingBody(endPointUserCreateWithArray, requestBodyUser, "application/" + json_xml);
+        return response;
     }
-    public void canDeleteUserByUserNameAndAssertStatus(String  endPointUser , String username, long expectedStatus ) {
+    public Response postCreateListOfUsersWithGivenInputList(String  endPointUserCreateWithList , String requestBodyUser, String json_xml ) {
+        Response response = postRequest.canPostRequestUsingBody(endPointUserCreateWithList, requestBodyUser, "application/" + json_xml);
+        return response;
+    }
+    public Response putUpdateUser(String  endPointUser , String username, String requestBodyUser, String json_xml ) {
+        Response response = putRequest.canPutRequestUsingBody(endPointUser, requestBodyUser, "application/" + json_xml);
+        return response;
+    }
+    public Response deleteDeletesUser(String  endPointUser , String username ) {
         Response response = deleteRequest.canDeleteElementUsingPath(endPointUser,username);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+        return response;
     }
-
 }

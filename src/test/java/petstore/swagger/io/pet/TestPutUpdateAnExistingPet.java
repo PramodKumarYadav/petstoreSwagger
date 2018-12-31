@@ -2,57 +2,86 @@ package petstore.swagger.io.pet;
 
 import domainentitites.PetMethods;
 import TestData.CreatePetRequest;
+import generalmethods.AssertResponse;
 import generalmethods.ParseJSON;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 public class TestPutUpdateAnExistingPet {
     PetMethods petMethods = new PetMethods();
     CreatePetRequest createPetRequest = new CreatePetRequest();
     ParseJSON parseJSON = new ParseJSON();
+    AssertResponse assertResponse = new AssertResponse();
 
 
     @Test
     public void putRequestUpdateRandomDataStatusAvailable() {
-        String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
-        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);
+
+        // First create a request to ensure the ID exists for search
+        String requestBodyBasic = createPetRequest.canCreateFullPetRequestBody();
+        Response responsePost = petMethods.postAddANewPetToTheStore("pet",requestBodyBasic,"json");
+        assertResponse.canAssertResponseStatus(200,responsePost.getStatusCode());
 
         // Get request ID
-        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyRandomData.toString(),"id","Search using ");
+        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyBasic.toString(),"id","Search using ");
 
+        // Generate a new body to update existing request
         String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"PUT_ChangeToPramod","available");
-        petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
+
+        // Update the pet element
+        Response response = petMethods.putUpdateAnExistingPet("pet",requestBody,"json");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
+
     }
     @Test
     public void putRequestUpdateRandomDataPending() {
-        String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
-        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);
+        // First create a request to ensure the ID exists for search
+        String requestBodyBasic = createPetRequest.canCreateFullPetRequestBody();
+        Response responsePost = petMethods.postAddANewPetToTheStore("pet",requestBodyBasic,"json");
+        assertResponse.canAssertResponseStatus(200,responsePost.getStatusCode());
 
         // Get request ID
-        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyRandomData.toString(),"id","Search using ");
+        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyBasic.toString(),"id","Search using ");
 
+        // Generate a new body to update existing request
         String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"PUT_ChangeToPramod","pending");
-        petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
+
+        // Update the pet element
+        Response response = petMethods.putUpdateAnExistingPet("pet",requestBody,"json");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void putRequestUpdateRandomDataSold() {
-        String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
-        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);
+        // First create a request to ensure the ID exists for search
+        String requestBodyBasic = createPetRequest.canCreateFullPetRequestBody();
+        Response responsePost = petMethods.postAddANewPetToTheStore("pet",requestBodyBasic,"json");
+        assertResponse.canAssertResponseStatus(200,responsePost.getStatusCode());
 
         // Get request ID
-        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyRandomData.toString(),"id","Search using ");
+        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyBasic.toString(),"id","Search using ");
 
+        // Generate a new body to update existing request
         String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"PUT_ChangeToPramod","sold");
-        petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
+
+        // Update the pet element
+        Response response = petMethods.putUpdateAnExistingPet("pet",requestBody,"json");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void putRequestUpdateRandomDataEmptyNameAndStatus() {
-        String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
-        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);
+        // First create a request to ensure the ID exists for search
+        String requestBodyBasic = createPetRequest.canCreateFullPetRequestBody();
+        Response responsePost = petMethods.postAddANewPetToTheStore("pet",requestBodyBasic,"json");
+        assertResponse.canAssertResponseStatus(200,responsePost.getStatusCode());
 
         // Get request ID
-        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyRandomData.toString(),"id","Search using ");
+        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyBasic.toString(),"id","Search using ");
 
-        String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"","");
-        petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
+        // Generate a new body to update existing request
+        String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"PUT_ChangeToPramod","");
+
+        // Update the pet element
+        Response response = petMethods.putUpdateAnExistingPet("pet",requestBody,"json");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
 }

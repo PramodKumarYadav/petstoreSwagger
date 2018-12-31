@@ -1,21 +1,27 @@
 package petstore.swagger.io.user;
 
 import domainentitites.UserMethods;
+import generalmethods.AssertResponse;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 public class TestDeleteDeletesUser {
     UserMethods userMethods = new UserMethods();
+    AssertResponse assertResponse = new AssertResponse();
 
     @Test
     public void tryDeleteingExistingUserByUserName() {
-        userMethods.canDeleteUserByUserNameAndAssertStatus("user","user1",200);
+        Response response = userMethods.deleteDeletesUser("user","user1");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void tryDeleteingNonExistingUser() {
-        userMethods.canDeleteUserByUserNameAndAssertStatus("user","6281930314171690275",404);
+        Response response = userMethods.deleteDeletesUser("user","6281930314171690275");
+        assertResponse.canAssertResponseStatus(404,response.getStatusCode());
     }
     @Test
     public void tryDeleteingInvalidUser() {
-        userMethods.canDeleteUserByUserNameAndAssertStatus("user","abcdefgh",400);
+        Response response = userMethods.deleteDeletesUser("user","abcdefgh");
+        assertResponse.canAssertResponseStatus(400,response.getStatusCode());
     }
 }

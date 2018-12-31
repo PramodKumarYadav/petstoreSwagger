@@ -1,17 +1,17 @@
 package petstore.swagger.io.user;
 
-import TestData.CreateOrderRequest;
 import domainentitites.UserMethods;
-import generalmethods.ParseJSON;
+import generalmethods.AssertResponse;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 public class TestGetLoginUser {
     UserMethods userMethods = new UserMethods();
-    CreateOrderRequest createOrderRequest = new CreateOrderRequest();
-    ParseJSON parseJSON = new ParseJSON();
+    AssertResponse assertResponse = new AssertResponse();
 
     @Test
     public void LoginUserWithDefaultUserNamePasswordUsingFullQuery() {
-        userMethods.canLogInUserAndAssertResponse("user/login","username=user1&password=pass@123",200);
+        Response response = userMethods.getLogsUserIntoTheSystem("user/login","username=user1&password=pass@123");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
 }

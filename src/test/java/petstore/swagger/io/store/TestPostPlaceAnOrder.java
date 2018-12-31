@@ -2,37 +2,37 @@ package petstore.swagger.io.store;
 
 import TestData.CreateOrderRequest;
 import domainentitites.StoreMethods;
-import generalmethods.ParseJSON;
+import generalmethods.AssertResponse;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 public class TestPostPlaceAnOrder {
     StoreMethods storeMethods = new StoreMethods();
     CreateOrderRequest createOrderRequest = new CreateOrderRequest();
-    ParseJSON parseJSON = new ParseJSON();
+    AssertResponse assertResponse = new AssertResponse();
 
     @Test
-    public void postRequestWithFullRequestBody() {
+    public void postOrderForAPetWithFullRequestBody() {
         String requestBody = createOrderRequest.canCreateBasicOrderRequestBody();
-        storeMethods.canPostOrderRequestByBodyAndAssertResponse("store/order",requestBody,"json",200);
+        Response response = storeMethods.postPlaceAnOrderForAPet("store/order",requestBody,"json");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void postRequestWithCustomRequestBody() {
         String requestBody = createOrderRequest.canCreateCustomOrderRequestBody(9,27,12,"placed", true);
-        storeMethods.canPostOrderRequestByBodyAndAssertResponse("store/order",requestBody,"json",200);
-    }
-    @Test
-    public void postRequestWithInvalidRequestBody() {
-        String requestBody = createOrderRequest.canCreateCustomOrderRequestBody(9,27,12,"somethingNotInList", true);
-        storeMethods.canPostOrderRequestByBodyAndAssertResponse("store/order",requestBody,"json",406);
+        Response response = storeMethods.postPlaceAnOrderForAPet("store/order",requestBody,"json");
+        assertResponse.canAssertResponseStatus(200,response.getStatusCode());
     }
     @Test
     public void postRequestWithEmptyRequestBody() {
         String requestBody = createOrderRequest.canCreateEmptyOrderRequestBody();
-        storeMethods.canPostOrderRequestByBodyAndAssertResponse("store/order",requestBody,"json",405);
+        Response response = storeMethods.postPlaceAnOrderForAPet("store/order",requestBody,"json");
+        assertResponse.canAssertResponseStatus(405,response.getStatusCode());
     }
     @Test
     public void postRequestWithBadRequestBody() {
         String requestBody = createOrderRequest.canCreateBadRequestBody();
-        storeMethods.canPostOrderRequestByBodyAndAssertResponse("store/order",requestBody,"json",400);
+        Response response = storeMethods.postPlaceAnOrderForAPet("store/order",requestBody,"json");
+        assertResponse.canAssertResponseStatus(400,response.getStatusCode());
     }
 }

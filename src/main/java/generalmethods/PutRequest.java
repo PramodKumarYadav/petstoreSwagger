@@ -20,7 +20,7 @@ public class PutRequest {
                 contentType(contentType).
                 body(requestBody).
                 put(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+//        System.out.println(response.prettyPeek());
         return response;
     }
     public Response canPutRequestUsingBodyAndPath(String  endPoint , String value, String requestBody, String contentType ) {
@@ -35,7 +35,7 @@ public class PutRequest {
                 contentType(contentType).
                 body(requestBody).
                 put(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+//        System.out.println(response.prettyPeek());
         return response;
     }
 }

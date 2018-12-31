@@ -15,7 +15,7 @@ public class CreatePetRequest {
         String  requestBody = "{\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateBadPetRequestBody() {
@@ -39,7 +39,7 @@ public class CreatePetRequest {
                 "  \"status\": \"available\"\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
 
@@ -64,7 +64,7 @@ public class CreatePetRequest {
                 "  \"status\": \"available\"\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateFullPetRequestBody() {
@@ -100,7 +100,7 @@ public class CreatePetRequest {
                 "  \"status\": \"" + randomStatus + "\"\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateCustomPetRequestBody(String id, String name, String status) {
@@ -135,7 +135,7 @@ public class CreatePetRequest {
                 "  \"status\": \"" + status + "\"\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     @Test

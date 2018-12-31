@@ -21,7 +21,7 @@ public class PostRequest {
                 contentType(contentType).
                 body(requestBody).
                 post(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+//        System.out.println(response.prettyPeek());
         return response;
     }
     public Response canPostRequestUsingPathAndParameters(String  endPoint , String value, String nameValue,  String statusValue,  String contentType ) {
@@ -36,7 +36,7 @@ public class PostRequest {
                 param("name",nameValue).
                 param("status",statusValue).
                 post(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+//        System.out.println(response.prettyPeek());
         return response;
     }
 
@@ -51,7 +51,7 @@ public class PostRequest {
                 header("accept",contentType).
                 multiPart("file2","file=@Original2.jpg;type=image/jpeg").
                 post(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+//        System.out.println(response.prettyPeek());
         return response;
     }
 }

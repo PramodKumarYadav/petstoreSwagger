@@ -17,17 +17,17 @@ public class GetRequest {
 
         // use RestAssured to make an HTML Call
         Response response = RestAssured.get(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+//        System.out.println(response.prettyPeek());
         return response;
     }
     public Response canGiveResponseUsingPath(String  pathParam , String value ) {
         String swaggerURL  =  testEnv.getBaseURL();
         String apiURL = swaggerURL + "/" + pathParam + "/" + value;
-        System.out.println("apiURL :" + apiURL);
+        // System.out.println("apiURL :" + apiURL);
 
         // use RestAssured to make an HTML Call
         Response response = RestAssured.get(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+        // System.out.println(response.prettyPeek());
         return response;
     }
 
@@ -46,7 +46,7 @@ public class GetRequest {
 
         // use RestAssured to make an HTML Call
         Response response = RestAssured.get(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+        // System.out.println(response.prettyPeek());
         return response;
     }
 
@@ -59,7 +59,7 @@ public class GetRequest {
 
         // use RestAssured to make an HTML Call
         Response response = RestAssured.get(apiURL).thenReturn();
-        System.out.println(response.prettyPeek());
+        // System.out.println(response.prettyPeek());
         return response;
     }
 }

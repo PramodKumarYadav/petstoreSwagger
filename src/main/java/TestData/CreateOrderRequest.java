@@ -16,7 +16,7 @@ public class CreateOrderRequest {
         String  requestBody = "{\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateBadRequestBody() {
@@ -32,7 +32,7 @@ public class CreateOrderRequest {
                 "  \"complete\": " + randomComplete + "\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateBasicOrderRequestBody() {
@@ -48,7 +48,7 @@ public class CreateOrderRequest {
                 "  \"complete\": " + randomComplete + "\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
 
     }
@@ -62,7 +62,7 @@ public class CreateOrderRequest {
                 "  \"complete\": " + complete + "\n" +
                 "}";
 
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     @Test

@@ -9,14 +9,14 @@ public class CreateUserRequest {
     public String canCreateEmptyUserRequestBody() {
         String  requestBody = "{\n" +
                 "}";
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateBadRequestBody() {
         String  requestBody = "{{\n" +
                 "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",\n" +
                 "}";
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateBasicUserRequestBody() {
@@ -30,7 +30,7 @@ public class CreateUserRequest {
                 "  \"phone\": \""+ "0987654321" +"\",\n" +
                 "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +"\n" +
                 "}";
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
     public String canCreateCustomUserRequestBody(int id, String username, String firstName, String lastName) {
@@ -44,7 +44,7 @@ public class CreateUserRequest {
                 "  \"phone\": \""+ "0987654321" +"\",\n" +
                 "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +"\n" +
                 "}";
-        System.out.println("requestBody" + requestBody);
+//        System.out.println("requestBody" + requestBody);
         return requestBody;
     }
 //    @Test
@@ -65,7 +65,7 @@ public class CreateUserRequest {
             requestBody = requestBody + userbody;
         }
 
-        System.out.println("requestBody : \n" + requestBody);
+//        System.out.println("requestBody : \n" + requestBody);
         return requestBody;
     }
 }

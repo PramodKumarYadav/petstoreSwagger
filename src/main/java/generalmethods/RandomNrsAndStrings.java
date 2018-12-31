@@ -7,9 +7,6 @@ import java.util.Random;
 public class RandomNrsAndStrings {
 
     public String canGenerateRandomString(Integer bound) {
-//
-        //@Test
-        //public void canGenerateRandomString() {
         //Pramod : Customizing for my needs; this method is from : https://www.baeldung.com/java-random-string
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'

@@ -1,12 +1,9 @@
 package TestData;
 
 import generalmethods.RandomNrsAndStrings;
-import org.junit.Test;
-import projectconfiguration.TestEnvironment;
 
 public class CreateUserRequest {
 
-    TestEnvironment testEnv = new TestEnvironment();
     RandomNrsAndStrings randomNrsAndStrings = new RandomNrsAndStrings();
 
     public String canCreateEmptyUserRequestBody() {

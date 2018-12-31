@@ -2,14 +2,12 @@ package TestData;
 
 import generalmethods.RandomNrsAndStrings;
 import org.junit.Test;
-import projectconfiguration.TestEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class CreatePetRequest {
-    TestEnvironment testEnv = new TestEnvironment();
     RandomNrsAndStrings randomNrsAndStrings = new RandomNrsAndStrings();
 
     public String canCreateEmptyPetRequestBody() {
@@ -21,16 +19,6 @@ public class CreatePetRequest {
         return requestBody;
     }
     public String canCreateBadPetRequestBody() {
-//
-        //@Test
-        //public void canCreatePetRequestBody() {
-        //Integer id = 1589257;
-        //String name = "BillyTheDog";
-        //Integer categoryID = id +1;
-        //String cataegoryName = "BullDog";
-        //List<String> photoUrls = new ArrayList<>();
-        //List<String> tags = new ArrayList<>();
-        //String status = "sold";
 
         String  requestBody = "{{\n" +
                 "  \"idadfas\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",  \n" +
@@ -56,16 +44,6 @@ public class CreatePetRequest {
     }
 
     public String canCreateBasicPetRequestBody() {
-//
-        //@Test
-        //public void canCreatePetRequestBody() {
-        //Integer id = 1589257;
-        //String name = "BillyTheDog";
-        //Integer categoryID = id +1;
-        //String cataegoryName = "BullDog";
-        //List<String> photoUrls = new ArrayList<>();
-        //List<String> tags = new ArrayList<>();
-        //String status = "sold";
 
         String  requestBody = "{\n" +
                 "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",  \n" +
@@ -90,17 +68,7 @@ public class CreatePetRequest {
         return requestBody;
     }
     public String canCreateFullPetRequestBody() {
-//
-        //@Test
-        //public void canCreatePetRequestBody() {
-        //Integer id = 1589257;
-        //String name = "BillyTheDog";
-        //Integer categoryID = id +1;
-        //String cataegoryName = "BullDog";
-        //List<String> photoUrls = new ArrayList<>();
-        //List<String> tags = new ArrayList<>();
-        //String status = "sold";
-        //
+
         Random generateRandom = new Random();
         long randomLongID = generateRandom.nextLong();
         System.out.println("id : " + randomLongID);
@@ -136,24 +104,11 @@ public class CreatePetRequest {
         return requestBody;
     }
     public String canCreateCustomPetRequestBody(String id, String name, String status) {
-//
-        //@Test
-        //public void canCreateCustomPetRequestBody() {
-        //Integer id = 1589257;
-        //String name = "BillyTheDog";
-        //Integer categoryID = id +1;
-        //String cataegoryName = "BullDog";
-        //List<String> photoUrls = new ArrayList<>();
-        //List<String> tags = new ArrayList<>();
-        //String status = "sold";
-        //String randomStatus = canGenerateRandomStatus();
 
         System.out.println("id : " + id);
         System.out.println("name : " + name);
         System.out.println("status : " + status);
 
-        Random generateRandom = new Random();
-        long randomLongID = generateRandom.nextLong();
         String randomCategory = canGenerateRandomPetCategory();
 
         String  requestBody = "{\n" +

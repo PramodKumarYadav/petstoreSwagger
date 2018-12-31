@@ -2,7 +2,6 @@ package TestData;
 
 import generalmethods.RandomNrsAndStrings;
 import org.junit.Test;
-import projectconfiguration.TestEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.Random;
 
 public class CreateOrderRequest {
 
-    TestEnvironment testEnv = new TestEnvironment();
     RandomNrsAndStrings randomNrsAndStrings = new RandomNrsAndStrings();
 
     public String canCreateEmptyOrderRequestBody() {

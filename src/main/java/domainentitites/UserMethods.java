@@ -2,17 +2,12 @@ package domainentitites;
 
 import generalmethods.*;
 import io.restassured.response.Response;
-import TestData.CreatePetRequest;
-import projectconfiguration.TestEnvironment;
 
 public class UserMethods {
-    TestEnvironment testEnv = new TestEnvironment();
     GetRequest getRequest = new GetRequest();
     DeleteRequest deleteRequest = new DeleteRequest();
-    CreatePetRequest createPetRequest = new CreatePetRequest();
     PostRequest postRequest = new PostRequest();
     PutRequest putRequest = new PutRequest();
-    AssertResponse assertResponse = new AssertResponse();
     public Response getGetUserByUserName(String  endPointUser , String username ) {
         Response response = getRequest.canGiveResponseUsingPath(endPointUser,username);
         return response;

@@ -10,15 +10,6 @@ public class PostRequest {
     CreatePetRequest createPetRequest = new CreatePetRequest();
 
     public Response canPostRequestUsingBody(String  endPoint , String requestBody, String contentType ) {
-//
-        //@Test
-        //public void canPostRequestUsingPathAndBody() {
-        //String  pathParam = "pet";
-        //String requestBody = createPetRequest.canCreatePetRequestBody();
-        //System.out.println(requestBody);
-        //String contentType = "application/json";
-        //Step 01: Parse response from page
-
         String swaggerURL  =  testEnv.getBaseURL();
         String apiURL = swaggerURL + "/" + endPoint;
         System.out.println("apiURL :" + apiURL);
@@ -34,15 +25,6 @@ public class PostRequest {
         return response;
     }
     public Response canPostRequestUsingPathAndParameters(String  endPoint , String value, String nameValue,  String statusValue,  String contentType ) {
-//
-        //@Test
-        //public void canPostRequestUsingPathAndBody() {
-        //String  pathParam = "pet";
-        //String requestBody = createPetRequest.canCreatePetRequestBody();
-        //System.out.println(requestBody);
-        //String contentType = "application/json";
-        //Step 01: Parse response from page
-
         String swaggerURL  =  testEnv.getBaseURL();
         String apiURL = swaggerURL + "/" + endPoint + "/" + value;
         System.out.println("apiURL :" + apiURL);
@@ -59,15 +41,6 @@ public class PostRequest {
     }
 
     public Response canPostRequestUsingPathAndFileParameter(String  endPoint , String value, String metadataValue,  String filePath,  String contentType ) {
-//
-        //@Test
-        //public void canPostRequestUsingPathAndBody() {
-        //String  pathParam = "pet";
-        //String requestBody = createPetRequest.canCreatePetRequestBody();
-        //System.out.println(requestBody);
-        //String contentType = "application/json";
-        //Step 01: Parse response from page
-
         String swaggerURL  =  testEnv.getBaseURL();
         String apiURL = swaggerURL + "/" + endPoint + "/" + value +"/uploadImage";
         System.out.println("apiURL :" + apiURL);

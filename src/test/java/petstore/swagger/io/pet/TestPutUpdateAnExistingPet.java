@@ -1,7 +1,7 @@
 package petstore.swagger.io.pet;
 
 import domainentitites.PetMethods;
-import domainentitites.CreatePetRequest;
+import TestData.CreatePetRequest;
 import generalmethods.ParseJSON;
 import org.junit.Test;
 
@@ -10,17 +10,7 @@ public class TestPutUpdateAnExistingPet {
     CreatePetRequest createPetRequest = new CreatePetRequest();
     ParseJSON parseJSON = new ParseJSON();
 
-    @Test
-    public void putRequestUpdateRandomDataEmptyNameAndStatus() {
-        String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
-        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);
 
-        // Get request ID
-        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyRandomData.toString(),"id","Search using ");
-
-        String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"","");
-        petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
-    }
     @Test
     public void putRequestUpdateRandomDataStatusAvailable() {
         String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
@@ -54,5 +44,15 @@ public class TestPutUpdateAnExistingPet {
         String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"PUT_ChangeToPramod","sold");
         petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
     }
+    @Test
+    public void putRequestUpdateRandomDataEmptyNameAndStatus() {
+        String requestBodyRandomData = createPetRequest.canCreateFullPetRequestBody();
+        petMethods.canPostPetRequestByBodyAndAssertResponse("pet",requestBodyRandomData,"json",200);
 
+        // Get request ID
+        String petID = parseJSON.canReturnAKeyValuefromJSONStringBody(requestBodyRandomData.toString(),"id","Search using ");
+
+        String requestBody = createPetRequest.canCreateCustomPetRequestBody(petID,"","");
+        petMethods.canPutPetRequestByBodyAndAssertResponse("pet",requestBody,"json",200);
+    }
 }

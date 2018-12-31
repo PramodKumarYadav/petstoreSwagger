@@ -1,13 +1,9 @@
 package petstore.swagger.io.store;
 
-import domainentitites.CreateOrderRequest;
-import domainentitites.CreatePetRequest;
-import domainentitites.PetMethods;
+import TestData.CreateOrderRequest;
 import domainentitites.StoreMethods;
 import generalmethods.*;
-import io.restassured.response.Response;
 import org.junit.Test;
-import projectconfiguration.TestEnvironment;
 
 public class TestDeleteOrderByID {
     StoreMethods storeMethods = new StoreMethods();

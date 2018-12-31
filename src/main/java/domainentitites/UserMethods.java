@@ -2,6 +2,7 @@ package domainentitites;
 
 import generalmethods.*;
 import io.restassured.response.Response;
+import TestData.CreatePetRequest;
 import projectconfiguration.TestEnvironment;
 
 public class UserMethods {
@@ -56,4 +57,14 @@ public class UserMethods {
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
     }
+    public void canUpdateUserByBodyAndPathAndAssertResponse(String  endPointUser , String username, String requestBody, String contentType, long expectedStatus ) {
+        Response response = putRequest.canPutRequestUsingBody(endPointUser, requestBody, "application/" + contentType);
+
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
+    public void canDeleteUserByUserNameAndAssertStatus(String  endPointUser , String username, long expectedStatus ) {
+        Response response = deleteRequest.canDeleteElementUsingPath(endPointUser,username);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
+
 }

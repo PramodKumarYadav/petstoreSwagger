@@ -1,6 +1,7 @@
-package domainentitites;
+package TestData;
 
 import generalmethods.RandomNrsAndStrings;
+import org.junit.Test;
 import projectconfiguration.TestEnvironment;
 
 public class CreateUserRequest {
@@ -47,6 +48,27 @@ public class CreateUserRequest {
                 "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +"\n" +
                 "}";
         System.out.println("requestBody" + requestBody);
+        return requestBody;
+    }
+//    @Test
+    public String  canCreateListOfUsersRequestBody(int numberOfUsers ) {
+//        int numberOfUsers = 3;
+        String  requestBody = "";
+        for (int i = 0; i < numberOfUsers; i++) {
+            String userbody = "[{\n" +
+                    "  \"id\": "+ randomNrsAndStrings.canGenerateRandomInteger(1000) +",\n" +
+                    "  \"username\": \""+ randomNrsAndStrings.canGenerateRandomString(5) +"\",\n" +
+                    "  \"firstName\": \""+ randomNrsAndStrings.canGenerateRandomString(7) +"\",\n" +
+                    "  \"lastName\": \""+ randomNrsAndStrings.canGenerateRandomString(9) +"\",\n" +
+                    "  \"email\": \""+ "PramodYadavdummyemail@gmail.com" +"\",\n" +
+                    "  \"password\": \""+ "431108055" +"\",\n" +
+                    "  \"phone\": \""+ "0987654321" +"\",\n" +
+                    "  \"userStatus\": "+ randomNrsAndStrings.canGenerateRandomInteger(10) +"\n" +
+                    "}] \n";
+            requestBody = requestBody + userbody;
+        }
+
+        System.out.println("requestBody : \n" + requestBody);
         return requestBody;
     }
 }

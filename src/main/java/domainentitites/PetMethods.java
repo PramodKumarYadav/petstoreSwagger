@@ -2,6 +2,7 @@ package domainentitites;
 
 import io.restassured.response.Response;
 import generalmethods.*;
+import TestData.CreatePetRequest;
 import projectconfiguration.TestEnvironment;
 
 import java.util.List;

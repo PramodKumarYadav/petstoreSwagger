@@ -2,6 +2,7 @@ package domainentitites;
 
 import generalmethods.*;
 import io.restassured.response.Response;
+import TestData.CreatePetRequest;
 import projectconfiguration.TestEnvironment;
 
 public class StoreMethods {
@@ -12,6 +13,20 @@ public class StoreMethods {
     PostRequest postRequest = new PostRequest();
     PutRequest putRequest = new PutRequest();
     AssertResponse assertResponse = new AssertResponse();
+
+    public Response canGetStoreInventory(String  endPointStoreInventory) {
+        Response response = getRequest.canGiveResponseWithNoParameters(endPointStoreInventory);
+        return response;
+    }
+    public void canGetInventoryAndAssertResponse(String  endPoint , long expectedStatus ) {
+//
+        //@Test
+        //public void canFindPetByID() {
+        //String  pet = "pet";
+        //String petID = "1";
+        Response response = getRequest.canGiveResponseWithNoParameters(endPoint);
+        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
+    }
     public void canPostOrderRequestByBodyAndAssertResponse(String  endPoint , String requestBody, String contentType, long expectedStatus ) {
 //
         //@Test
@@ -27,15 +42,6 @@ public class StoreMethods {
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"id");
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"name");
 //        assertResponse.canAssertAResponseKeyValue(requestBody,response,"status");
-    }
-    public void canGetInventoryAndAssertResponse(String  endPoint , long expectedStatus ) {
-//
-        //@Test
-        //public void canFindPetByID() {
-        //String  pet = "pet";
-        //String petID = "1";
-        Response response = getRequest.canGiveResponseWithNoParameters(endPoint);
-        assertResponse.canAssertResponseStatus(expectedStatus,response.getStatusCode());
     }
     public void canDeleteOrderByIDAndAssertStatus(String  endPoint , String orderID, long expectedStatus ) {
 //

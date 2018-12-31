@@ -1,6 +1,6 @@
 package petstore.swagger.io.store;
 
-import domainentitites.CreateOrderRequest;
+import TestData.CreateOrderRequest;
 import domainentitites.StoreMethods;
 import generalmethods.ParseJSON;
 import org.junit.Test;

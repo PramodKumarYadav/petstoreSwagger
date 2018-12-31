@@ -1,6 +1,6 @@
 package petstore.swagger.io.pet;
 
-import domainentitites.CreatePetRequest;
+import TestData.CreatePetRequest;
 import domainentitites.PetMethods;
 import generalmethods.ParseJSON;
 import org.junit.Test;
@@ -35,6 +35,7 @@ public class TestDeleteDeletesAPet {
     }
     @Test
     public void tryDeleteingInvalidPetID() {
+
         petMethods.canDeletePetByIDAndAssertStatus("pet","abcdefgh",400);
     }
 }

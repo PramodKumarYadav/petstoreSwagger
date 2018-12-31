@@ -1,4 +1,4 @@
-package domainentitites;
+package TestData;
 
 import generalmethods.RandomNrsAndStrings;
 import org.junit.Test;
